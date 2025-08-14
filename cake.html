@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Project</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="content-wrapper">
+  <h1>Elisa's Birthday Cake</h1>
+  <br><br>
+  <br><br>
+  <br><br>
+  <br><br>
+  <div class="cake">
+    <div class="top-icing"></div>
+      <div class="icing"></div>
+        <div class="cream-layer layer-1"></div>
+          <div class="cream-layer layer-2"></div>
+  <div class="candle-container">
+    <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+  </div>
+</div>
+  <button class="btn" id="toggleBtn">Blow</button>
+</div>
+
+  <div id="confetti-container"></div>
+  <button class="btn hidden" id="showLetterBtn">Open🎁</button>
+
+  <div id="letterModal" class="modal">
+    <div class="envelope">
+      <div class="flap"></div>
+        <div class="paper letter">
+          <h2 class="letter-header" style="text-align: center; color: #943c2a;">Happy Birthday 18th Elisa</h2>
+            <p class= "letter-content" style="font-size: 16px; color: #943c2a;">May all your wishes and good prayers be granted soon.
+Whatever you are pursuing, may the journey always be smooth, easy, and end well.
+Stay healthy, strong, and happy as you navigate this life. Chase all your dreams and aspirations, no matter what has happened or will come.
+Be the good in whatever form you desire, for in this life, you can only truly rely on yourself.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const button = document.getElementById("toggleBtn");
+  const candles = document.querySelectorAll(".candle");
+  const greeting = document.getElementById("greeting");
+  const confettiContainer = document.getElementById("confetti-container");
+  const showLetterBtn = document.getElementById("showLetterBtn");
+  const letterModal = document.getElementById("letterModal");
+  document.addEventListener("DOMContentLoaded", () => {
+  const body = document.querySelector("body");
+  const contentWrapper = document.querySelector(".content-wrapper");
+  const emojis = ["🎀", "🎉", "💖", "✨", "🎂"]; 
+  const totalEmojis = 20; 
+
+  const wrapperRect = contentWrapper.getBoundingClientRect(); 
+
+  for (let i = 0; i < totalEmojis; i++) {
+    const emoji = document.createElement("div");
+    emoji.classList.add("emoji-decor");
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+    let top, left;
+
+    // Pastikan posisi emoji tidak berada di dalam area konten utama
+    do {
+      top = Math.random() * window.innerHeight;
+      left = Math.random() * window.innerWidth;
+    } while (
+      top > wrapperRect.top && 
+      top < wrapperRect.bottom && 
+      left > wrapperRect.left && 
+      left < wrapperRect.right
+    );
+
+    emoji.style.top = top + "px";
+    emoji.style.left = left + "px";
+
+    
+    emoji.style.fontSize = Math.random() * 10 + 15 + "px";
+
+    body.appendChild(emoji);
+  }
+
+  // Event saat tombol "Tiup Lilin" ditekan
+  button.addEventListener("click", () => {
+    // Matikan lilin
+    candles.forEach(candle => {
+      const flame = candle.querySelector(".flame");
+      flame.style.opacity = 0;
+      flame.style.animation = "none";
+    });
+
+  
+    // Mulai konfeti
+    setInterval(() => launchConfetti(10), 300);
+
+    // Tampilkan tombol buka surat
+    showLetterBtn.classList.remove("hidden");
+  });
+
+  // Event tombol "Buka Surat 🎁"
+  showLetterBtn.addEventListener("click", () => {
+    letterModal.classList.add("show");
+  });
+
+  // Tutup modal surat saat diklik
+  letterModal.addEventListener("click", () => {
+    letterModal.classList.remove("show");
+  });
+
+  // Fungsi untuk meluncurkan konfeti
+  function launchConfetti(count) {
+    for (let i = 0; i < count; i++) {
+      const confetti = document.createElement("div");
+      confetti.classList.add("confetti");
+      confetti.style.left = Math.random() * window.innerWidth + "px";
+      confetti.style.backgroundColor = randomColor();
+      confettiContainer.appendChild(confetti);
+
+      setTimeout(() => confetti.remove(), 3000);
+    }
+  }
+
+  // Fungsi untuk memilih warna acak
+  function randomColor() {
+    const colors = ["#d81b60", "#f48fb1", "#fbc02d", "#4caf50", "#42a5f5", "#ff7043"];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+});
+</script>
+</body>
+</html>

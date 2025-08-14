@@ -1,0 +1,315 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  background: linear-gradient(-45deg, #fbc2eb, #f7d794, #ffecd2, #f6c3ff);
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.emoji-decor {
+  position: absolute;
+  font-size: 20px; /* Ukuran emoji */
+  animation: floatEmoji 6s infinite ease-in-out;
+  opacity: 0.5;
+}
+
+@keyframes floatEmoji {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+h1 {
+  color: #B04E3A;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ffeaa7; }
+  to { text-shadow: 0 0 20px #ff9ff3; }
+}
+
+.cake {
+  position: relative;
+  width: 400px;
+  height: 220px;
+  background: linear-gradient(to bottom, #B04E3A, #9E2B15);
+  border-radius: 60px 60px 25px 25px;
+  box-shadow: inset 0 15px 25px rgba(255, 255, 255, 0.5), 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cake::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 60px 60px 25px 25px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3) inset;
+  pointer-events: none;
+}
+
+.top-icing {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 50px;
+  background: radial-gradient(circle at center, #FFB6C1, #FF6F91);
+  border-radius: 50%;
+  box-shadow: inset 0 -4px 8px rgba(255, 255, 255, 0.6);
+  z-index: 1;
+}
+
+.icing {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, #9E2B15, #4E342E);
+  border-radius: 50% 50% 40% 40%;
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 60%,
+    95% 70%, 90% 55%, 85% 80%,
+    75% 60%, 65% 90%, 55% 65%,
+    45% 85%, 35% 60%, 25% 90%,
+    15% 65%, 10% 85%, 5% 70%, 0% 80%
+  );
+  box-shadow: inset 0 -5px 10px rgba(255, 255, 255, 0.4), 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.cream-layer {
+  position: absolute;
+  width: 100%;
+  height: 20px; /* Ketebalan lapisan */
+  background: linear-gradient(to bottom, #FFB6C1, #FF6F91);
+  border-top-left-radius: 70px; /* Lengkungan bagian atas */
+  border-top-right-radius: 70px;
+  border-bottom-left-radius: 70px; /* Lengkungan bagian bawah */
+  border-bottom-right-radius: 70px;
+}
+
+.layer-1 {
+  top: 40%; /* Posisi lapisan pertama */
+  height: 15px; /* Ukuran garis sedikit tipis */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.layer-2 {
+  top: 70%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.candle-container {
+  position: absolute;
+  top: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 100px;
+}
+
+.candle {
+  width: 20px;
+  height: 100px;
+  background: linear-gradient(to bottom, #fbc02d, #fdd835);
+  border-radius: 3px;
+  position: relative;
+}
+
+.flame {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 28px;
+  background: radial-gradient(ellipse at center, #fff9c4 10%, #ffeb3b 50%, #f57f17 90%);
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 0 10px #ffc107, 0 0 20px #ff9800, 0 0 30px #ff5722;
+  animation: flicker 1.2s infinite ease-in-out alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+.btn {
+  margin-top: 30px;
+  padding: 12px 25px;
+  background-color: #943c2a;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 135, 0.4);
+}
+
+.btn:hover {
+  background-color: #5a1a07;
+}
+
+.btn.hidden {
+  display: none;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  opacity: 0.9;
+  border-radius: 2px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.envelope {
+  position: relative;
+  width: 600px;
+  height: 1.9;
+  background: #f4e5e5;
+  border-radius: 10px;
+  overflow: visible;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: openEnvelope 10s ease forwards;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  background: #ffcad4;
+  transform-origin: top;
+  animation: flapOpen 3s ease forwards;
+  z-index: 2;
+  animation-fill-mode: forwards;
+  backface-visibility: hidden;
+}
+
+
+/* Animasi flap terbuka */
+@keyframes flapOpen {
+  0% { transform: rotateX(0); }
+  100% { transform: rotateX(-180deg); }
+}
+
+/* Animasi surat muncul */
+@keyframes slideUp {
+  0% { top: 100%; opacity: 0; }
+  100% { top: 0; opacity: 1; }
+}
+
+.letter {
+  position: relative;
+  z-index: 1;
+  background: #FFE4E1; /* Warna latar pink muda */
+  padding: 30px;
+  margin: 20px;
+  border-radius: 10px;
+  text-align: left;
+  font-family: 'Cinzel Decorative', serif;
+  max-width: 500px;
+  line-height: 1.8;
+  animation: fadeIn 0.5s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Tambahan bayangan untuk kesan melayang */
+  border: 2px solid #FFB6C1; /* Border manis */
+  backdrop-filter: blur(2px);
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.letter::before,
+.letter::after {
+  content: '🎀'; /* Simbol dekorasi */
+  position: absolute;
+  font-size: 30px;
+  color: #FF6F91; /* Warna dekorasi */
+}
+
+.letter::before {
+  top: 10px;
+  left: -30px;
+}
+
+.letter::after {
+  bottom: 10px;
+  right: -30px;
+}
+
+#showLetterBtn {
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+
